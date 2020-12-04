@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>iSEE workshop - package and functionality</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Charlotte Soneson, Kevin Rue-Albrecht, Federico Marini, Aaron Lun" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# iSEE workshop - package and functionality
+## Edition 2020
+### <a href="https://csoneson.github.io">Charlotte Soneson</a>, <a href="https://kevinrue.github.io">Kevin Rue-Albrecht</a>, <a href="https://federicomarini.github.io/">Federico Marini</a>, <a href="https://orcid.org/0000-0002-3564-4813/">Aaron Lun</a>
+### 2020-07-28 (updated: 2020-12-04)
+
+---
+
+
+layout: true
+
+&lt;div class="my-header"&gt;&lt;img src="img/stickers/iSEE.png" alt="OxfordiSEE logo" align="right" height="90%"&gt;&lt;/div&gt;
+
+&lt;div class="my-footer"&gt;&lt;span&gt;
+iSEE Workshop 2020
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
+interactive SummarizedExperiment Explorer
+&lt;/span&gt;&lt;/div&gt;
+
+
+
+
+
+
+
+---
+
+# Structure of the session
+
+.pull-left[
+## Timeline
+
+&lt;i class="far fa-clock"&gt;&lt;/i&gt;
+This session is 55 minutes.
+
+- Introduction slides
+
+- Cloud workshop setup
+
+- Introduction to the GUI
+
+- Configuring the GUI
+
+- Designing new panels
+]
+
+.pull-right[
+## Interact
+
+&lt;i class="far fa-comment-alt"&gt;&lt;/i&gt;
+Text chat (in pathable)
+
+&lt;i class="fas fa-chart-bar"&gt;&lt;/i&gt;
+Polls (in pathable)
+
+&lt;i class="fab fa-slack"&gt;&lt;/i&gt; Slack [#isee](https://community-bioc.slack.com/archives/C8BJLSP8T)
+
+&lt;i class="fab fa-github-square"&gt;&lt;/i&gt; Slides [GitHub Pages](https://isee.github.io/iSEEWorkshop2020Slides/#1)
+
+&lt;i class="fab fa-github-square"&gt;&lt;/i&gt; Workshop vignette [GitHub Pages](https://isee.github.io/iSEEWorkshop2020/articles/iSEE-lab.html)
+
+
+&lt;i class="fab fa-github"&gt;&lt;/i&gt;
+GitHub [organization](https://github.com/iSEE).
+]
+
+---
+
+# &lt;i class="fas fa-bullhorn"&gt;&lt;/i&gt; Disclaimer
+
+_This presentation contains slides that some viewers may find disturbing ..._
+
+.right[
+... _or greatly entertaining!_
+]
+
+&lt;br/&gt;
+
+&lt;img src="https://media.tenor.com/images/6e69348509544a2654cccc99ead3fd36/tenor.gif" width="40%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# &lt;i class="fas fa-users"&gt;&lt;/i&gt; The team
+
+&lt;br/&gt;
+
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td width="25%"&gt;&lt;a href="https://kevinrue.github.io"&gt;&lt;img src="img/people/kevin-rue.jpg"&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td width="25%"&gt;&lt;a href="https://csoneson.github.io"&gt;&lt;img src="img/people/charlotte-soneson.png"&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td width="25%"&gt;&lt;a href="https://federicomarini.github.io"&gt;&lt;img src="img/people/federico-marini.png"&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td width="25%"&gt;&lt;a href="https://orcid.org/0000-0002-3564-4813"&gt;&lt;img src="img/people/aaron-lun.png"&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align='center' width="25%"&gt;Kevin&lt;/td&gt;
+&lt;td align='center' width="25%"&gt;Charlotte&lt;/td&gt;
+&lt;td align='center' width="25%"&gt;Federico&lt;/td&gt;
+&lt;td align='center' width="25%"&gt;Aaron&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+
+
+???
+
+This was a team effort!
+
+---
+
+# &lt;i class="fas fa-pencil-ruler"&gt;&lt;/i&gt; Designed for Bioconductor
+
+&lt;img src="img/stickers/biocstickers.jpg" width="75%" style="display: block; margin: auto;" /&gt;
+
+&lt;https://bioconductor.org&gt;
+
+???
+
+iSEE tightly integrates with other packages of the Bioconductor project.
+
+---
+
+# SingleCellExperiment
+
+&lt;img src="img/OSCA/bioc-figures_v2-02.png" width="1412" height="400px" style="display: block; margin: auto;" /&gt;
+
+.footnote[
+
+]
+
+???
+
+iSEE focuses on the SingleCellExperiment class.
+This class stores all the data and metadata associated with assays, cells, and features.
+
+---
+
+# SingleCellExperiment usage in a workflow
+
+.pull-left[
+- Data import (`DropletUtils`, `tximeta`)
+
+- Quality control (`scater`)
+
+- Normalization, feature selection (`scran`, `zinbwave`)
+
+- Dimensionality reduction (`BiocSingular`, `scater`, `zinbwave`)
+
+- Clustering (`SC3`, `clustree`)
+
+- Marker gene detection (`scran`, `scDD`)
+
+- Trajectory inference (`slingshot`)
+
+- Visualization (`iSEE`)
+
+- And much more...
+]
+
+.pull-right[
+&lt;img src="img/OSCA/bioc-figures_v2-03.png" width="1960" style="display: block; margin: auto;" /&gt;
+
+.right[
+
+]
+]
+
+???
+
+The SingleCellExperiment class is designed to accomodate all the information produced along a typical single-cell analysis workflow.
+
+Those data include raw data:
+
+- raw assay data
+- experimental metadata
+Processed data:
+- quality control metrics
+- normalized data
+- dimensionality reduction results
+Downstream analyses:
+- cluster labels
+- differential expression results
+- downstream cell and feature annotations
+
+---
+
+# iSEE &lt;i class="fas fa-heartbeat"&gt;&lt;/i&gt; SingleCellExperiment
+
+&lt;img src="img/OSCA/OSCA-figure-4.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+.footnote[
+
+]
+
+???
+
+Here we demonstrate how iSEE dissects SCE objects to produce figures.
+
+---
+
+# The iSEE interface
+
+&lt;img src="img/screenshots/iSEE_screenshot.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+???
+
+iSEE provides a powerful yet flexible user interface that includes 8 predefined panel types.
+That said, it also gives the freedom to define any number custom panel types, both plots and tables.
+
+---
+
+# &lt;i class="fas fa-exclamation-triangle"&gt;&lt;/i&gt; Reinventing the wheel
+
+&lt;img src="img/misc/batman-robin.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+.footnote[
+See also: &lt;i class="fab fa-github"&gt;&lt;/i&gt; [federicomarini/awesome-expression-browser](https://github.com/federicomarini/awesome-expression-browser)
+]
+
+???
+
+Don't try this at home.
+
+The wealth of information produced by single-cell analysis workflows has motivated the development of many interactive applications to help researchers explore their data sets.
+Each of those applications has its own strengths and limitations.
+It is very tempting to develop new applications to with their own strengths and limitations.
+Before you decide to do so, we encourage you to test iSEE.
+You may find that it already does everything you would like!
+
+---
+
+# &lt;i class="fas fa-medal"&gt;&lt;/i&gt; Winners of the 1st Rstudio Shiny Contest
+
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/9a02c0a6f476893b0ecbed9738d8485750c12fff/0528f/images/2019-01-07-shiny-contest.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+.footnote[
+Read more: &lt;https://blog.rstudio.com/2019/04/05/first-shiny-contest-winners/&gt;
+]
+
+???
+
+iSEE won the RStudio Shiny Contest in April 2019 with mention for "Most technically impressive".
+
+In particular:
+
+- There were 136 submissions from 122 unique app developers!
+
+---
+
+# &lt;i class="fas fa-globe-americas"&gt;&lt;/i&gt; The iSEE-verse
+
+* http://bioconductor.org/packages/iSEE/
+
+* http://bioconductor.org/packages/iSEEu/
+
+* &lt;i class="fab fa-github"&gt;&lt;/i&gt; [iSEE](https://github.com/iSEE) organization
+  + &lt;i class="fab fa-github"&gt;&lt;/i&gt; [iSEE/iSEE2018](https://github.com/iSEE/iSEE2018) manuscript
+  + &lt;i class="fab fa-github"&gt;&lt;/i&gt; [iSEE/iSEE](https://github.com/iSEE/iSEE) source code
+  + &lt;i class="fab fa-github"&gt;&lt;/i&gt; [iSEE/iSEE-book](https://github.com/iSEE/iSEE-book) repository for the book about extending iSEE
+  + &lt;i class="fab fa-github"&gt;&lt;/i&gt; [iSEE/iSEEu](https://github.com/iSEE/iSEEu) source code for iSEEu, containing additional panels and modes for iSEE
+  + &lt;i class="fab fa-github"&gt;&lt;/i&gt; [iSEE/iSEE_custom](https://github.com/iSEE/iSEE_custom) example of custom panels
+  + &lt;i class="fab fa-github"&gt;&lt;/i&gt; [iSEE/iSEE_instances](https://github.com/iSEE/iSEE_instances) gallery of complete analyses on public data
+  + &lt;i class="fab fa-github"&gt;&lt;/i&gt; [iSEE/iSEEWorkshop2020](https://github.com/iSEE/iSEEWorkshop2020) this workshop, also to be given at the Bioconductor 2020 conference
+
+???
+
+The growing funtionality of the iSEE package is demonstrated in various places:
+
+- The Bioconductor website is the primary source of information for the latest release and development package versions.
+- The package GitHub repository is the place to monitor the latest developments, open issues, and contribute pull requests (consider the Bioconductor support website for general questions)
+- kevinrue/iSEE_custom demonstrates the development of custom panels through a gallery of examples
+- federicomarini/iSEE_instances demonstrates the integration of iSEE with entire analyses of publicly available datasets through a gallery of examples
+- Finally, the iSEE workshop was written for the Bioconductor conference 2019 to showcase the functionality of the iSEE package for both newcomers and experienced R users.
+
+---
+
+# &lt;i class="fas fa-laptop"&gt;&lt;/i&gt; Live demo
+
+&lt;img src="img/misc/workshop.png" width="600px" height="300px" style="display: block; margin: auto;" /&gt;
+
+## Resources
+
+- [Workshop setup](https://isee.github.io/iSEEWorkshop2020/articles/setup.html),
+  or `vignette('setup', 'iSEEWorkshop2020')`
+
+- [Workshop vignette](https://isee.github.io/iSEEWorkshop2020/articles/iSEE-lab.html),
+  or, `vignette('iSEE-lab', 'iSEEWorkshop2020')`
+
+???
+
+With that introduction to the user interface, let us head into the workshop!
+
+Generated by: &lt;i class="fab fa-github"&gt;&lt;/i&gt; [kevinrue/magick-profile](https://github.com/kevinrue/magick-profile)
+
+---
+
+# &lt;i class="fas fa-microphone"&gt;&lt;/i&gt; Voice recognition
+
+.center[`iSEE(sce, voice=TRUE)`]
+
+&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;"&gt;
+  &lt;iframe src="https://www.youtube.com/embed/0crFZLwAJOE?autoplay=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 90%; border:0;" allowfullscreen title="YouTube Video"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+???
+
+iSEE can be extended using third-party JavaScript libraries.
+Here we demonstrate how speech recognition was integrated to support a number of predefined vocal commands.
+
+---
+
+# &lt;i class="fas fa-bug"&gt;&lt;/i&gt; Bugs
+
+.center[`iSEE(sce, bugs=TRUE)`]
+
+&lt;img src="img/screenshots/iSEE-bug.gif" width="90%" style="display: block; margin: auto;" /&gt;
+
+???
+
+iSEE can be extended using third-party JavaScript libraries.
+Here we demonstrate how speech recognition was integrated to support a number of predefined vocal commands.
+
+---
+
+# References
+
+.small-p[
+NULL
+]
+
+&lt;!-- F1000 Twitter teaser --&gt;
+&lt;!-- {{&lt; video library="1" src="iSEE/twitter-F1000.mp4" controls="yes" &gt;}} --&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
