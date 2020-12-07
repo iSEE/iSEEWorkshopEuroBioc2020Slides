@@ -3,7 +3,7 @@ title: 'iSEE workshop - package and functionality'
 subtitle: 'Edition 2020'
 author: '[Charlotte Soneson](https://csoneson.github.io), [Kevin Rue-Albrecht](https://kevinrue.github.io), [Federico Marini](https://federicomarini.github.io/), [Aaron Lun](https://orcid.org/0000-0002-3564-4813/)'
 institute: ''
-date: '2020-07-28 (updated: `r Sys.Date()`)'
+date: '2020-12-16 (updated: `r Sys.Date()`)'
 output:
   xaringan::moon_reader:
     css: [default, metropolis, rladies-fonts, "my-theme.css"]
@@ -13,7 +13,7 @@ output:
       highlightLines: true
       countIncrementalSlides: false
 # uncomment this line to produce HTML and PDF in RStudio:
-knit: pagedown::chrome_print
+#knit: pagedown::chrome_print
 ---
 
 layout: true
@@ -59,7 +59,7 @@ bib <- ReadBib("references.bib")
 ## Timeline
 
 <i class="far fa-clock"></i>
-This session is 55 minutes.
+This session is 90 minutes.
 
 - Introduction slides
 
@@ -67,46 +67,22 @@ This session is 55 minutes.
 
 - Introduction to the GUI
 
-- Configuring the GUI
-
-- Designing new panels
+- Interactive exercises
 ]
 
 .pull-right[
 ## Interact
 
-<i class="far fa-comment-alt"></i>
-Text chat (in pathable)
-
-<i class="fas fa-chart-bar"></i>
-Polls (in pathable)
-
 <i class="fab fa-slack"></i> Slack [#isee](https://community-bioc.slack.com/archives/C8BJLSP8T)
 
-<i class="fab fa-github-square"></i> Slides [GitHub Pages](https://isee.github.io/iSEEWorkshop2020Slides/#1)
+<i class="fab fa-github-square"></i> Slides [GitHub Pages](https://isee.github.io/iSEEWorkshopEuroBioc2020Slides/#1)
 
-<i class="fab fa-github-square"></i> Workshop vignette [GitHub Pages](https://isee.github.io/iSEEWorkshop2020/articles/iSEE-lab.html)
+<i class="fab fa-github-square"></i> Workshop vignette [GitHub Pages](https://isee.github.io/iSEEWorkshopEuroBioc2020)
 
 
 <i class="fab fa-github"></i>
 GitHub [organization](https://github.com/iSEE).
 ]
-
----
-
-# <i class="fas fa-bullhorn"></i> Disclaimer
-
-_This presentation contains slides that some viewers may find disturbing ..._
-
-.right[
-... _or greatly entertaining!_
-]
-
-<br/>
-
-```{r, fig.align='center', out.width='40%', echo=FALSE}
-knitr::include_graphics("https://media.tenor.com/images/6e69348509544a2654cccc99ead3fd36/tenor.gif")
-```
 
 ---
 
@@ -251,76 +227,7 @@ That said, it also gives the freedom to define any number custom panel types, bo
 
 ---
 
-# <i class="fas fa-exclamation-triangle"></i> Reinventing the wheel
-
-```{r, fig.align='center', out.width='50%', echo=FALSE}
-knitr::include_graphics("img/misc/batman-robin.png")
-```
-
-.footnote[
-See also: <i class="fab fa-github"></i> [federicomarini/awesome-expression-browser](https://github.com/federicomarini/awesome-expression-browser)
-]
-
-???
-
-Don't try this at home.
-
-The wealth of information produced by single-cell analysis workflows has motivated the development of many interactive applications to help researchers explore their data sets.
-Each of those applications has its own strengths and limitations.
-It is very tempting to develop new applications to with their own strengths and limitations.
-Before you decide to do so, we encourage you to test iSEE.
-You may find that it already does everything you would like!
-
----
-
-# <i class="fas fa-medal"></i> Winners of the 1st Rstudio Shiny Contest
-
-```{r, fig.align='center', out.width='60%', echo=FALSE}
-knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/9a02c0a6f476893b0ecbed9738d8485750c12fff/0528f/images/2019-01-07-shiny-contest.png")
-```
-
-.footnote[
-Read more: <https://blog.rstudio.com/2019/04/05/first-shiny-contest-winners/>
-]
-
-???
-
-iSEE won the RStudio Shiny Contest in April 2019 with mention for "Most technically impressive".
-
-In particular:
-
-- There were 136 submissions from 122 unique app developers!
-
----
-
-# <i class="fas fa-globe-americas"></i> The iSEE-verse
-
-* http://bioconductor.org/packages/iSEE/
-
-* http://bioconductor.org/packages/iSEEu/
-
-* <i class="fab fa-github"></i> [iSEE](https://github.com/iSEE) organization
-  + <i class="fab fa-github"></i> [iSEE/iSEE2018](https://github.com/iSEE/iSEE2018) manuscript
-  + <i class="fab fa-github"></i> [iSEE/iSEE](https://github.com/iSEE/iSEE) source code
-  + <i class="fab fa-github"></i> [iSEE/iSEE-book](https://github.com/iSEE/iSEE-book) repository for the book about extending iSEE
-  + <i class="fab fa-github"></i> [iSEE/iSEEu](https://github.com/iSEE/iSEEu) source code for iSEEu, containing additional panels and modes for iSEE
-  + <i class="fab fa-github"></i> [iSEE/iSEE_custom](https://github.com/iSEE/iSEE_custom) example of custom panels
-  + <i class="fab fa-github"></i> [iSEE/iSEE_instances](https://github.com/iSEE/iSEE_instances) gallery of complete analyses on public data
-  + <i class="fab fa-github"></i> [iSEE/iSEEWorkshop2020](https://github.com/iSEE/iSEEWorkshop2020) this workshop, also to be given at the Bioconductor 2020 conference
-
-???
-
-The growing funtionality of the iSEE package is demonstrated in various places:
-
-- The Bioconductor website is the primary source of information for the latest release and development package versions.
-- The package GitHub repository is the place to monitor the latest developments, open issues, and contribute pull requests (consider the Bioconductor support website for general questions)
-- kevinrue/iSEE_custom demonstrates the development of custom panels through a gallery of examples
-- federicomarini/iSEE_instances demonstrates the integration of iSEE with entire analyses of publicly available datasets through a gallery of examples
-- Finally, the iSEE workshop was written for the Bioconductor conference 2019 to showcase the functionality of the iSEE package for both newcomers and experienced R users.
-
----
-
-# <i class="fas fa-laptop"></i> Live demo
+# <i class="fas fa-laptop"></i> Workshop
 
 ```{r, fig.align='center', echo=FALSE, out.height='300px', out.width='600px'}
 knitr::include_graphics("img/misc/workshop.png")
@@ -328,11 +235,11 @@ knitr::include_graphics("img/misc/workshop.png")
 
 ## Resources
 
-- [Workshop setup](https://isee.github.io/iSEEWorkshop2020/articles/setup.html),
-  or `vignette('setup', 'iSEEWorkshop2020')`
+- [Interface overview](https://isee.github.io/iSEEWorkshopEuroBioc2020/articles/overview.html),
+  or `vignette('overview', 'iSEEWorkshopEuroBioc2020')`
 
-- [Workshop vignette](https://isee.github.io/iSEEWorkshop2020/articles/iSEE-lab.html),
-  or, `vignette('iSEE-lab', 'iSEEWorkshop2020')`
+- [Exercises](https://isee.github.io/iSEEWorkshopEuroBioc2020/articles/exercises.html),
+  or, `vignette('exercises', 'iSEEWorkshopEuroBioc2020')`
 
 ???
 
@@ -340,45 +247,3 @@ With that introduction to the user interface, let us head into the workshop!
 
 Generated by: <i class="fab fa-github"></i> [kevinrue/magick-profile](https://github.com/kevinrue/magick-profile)
 
----
-
-# <i class="fas fa-microphone"></i> Voice recognition
-
-.center[`iSEE(sce, voice=TRUE)`]
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/0crFZLwAJOE?autoplay=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 90%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-???
-
-iSEE can be extended using third-party JavaScript libraries.
-Here we demonstrate how speech recognition was integrated to support a number of predefined vocal commands.
-
----
-
-# <i class="fas fa-bug"></i> Bugs
-
-.center[`iSEE(sce, bugs=TRUE)`]
-
-```{r, fig.align='center', out.width='90%', echo=FALSE}
-knitr::include_graphics("img/screenshots/iSEE-bug.gif")
-```
-
-???
-
-iSEE can be extended using third-party JavaScript libraries.
-Here we demonstrate how speech recognition was integrated to support a number of predefined vocal commands.
-
----
-
-# References
-
-.small-p[
-```{r, include=TRUE, echo=FALSE, results="asis"}
-PrintBibliography(bib)
-```
-]
-
-<!-- F1000 Twitter teaser -->
-<!-- {{< video library="1" src="iSEE/twitter-F1000.mp4" controls="yes" >}} -->
