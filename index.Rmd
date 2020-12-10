@@ -81,7 +81,7 @@ This session is 90 minutes.
 
 
 <i class="fab fa-github"></i>
-GitHub [organization](https://github.com/iSEE).
+GitHub [organization](https://github.com/iSEE)
 ]
 
 ---
