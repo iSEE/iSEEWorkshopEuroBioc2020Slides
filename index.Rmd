@@ -239,7 +239,7 @@ knitr::include_graphics("img/misc/workshop.png")
 
 - Choose the `iSEE: Interactive SummarizedExperiment Explorer` workshop and launch the RStudio session
 
-- Open the [pkgdown website](https://isee.github.io/iSEEWorkshopEuroBioc2020/) - vignettes are available under 'Articles'
+- In a separate tab, open the [pkgdown website](https://isee.github.io/iSEEWorkshopEuroBioc2020/) - vignettes are available under 'Articles'
 
 ???
 
