@@ -238,8 +238,8 @@ knitr::include_graphics("img/misc/workshop.png")
 - [Interface overview](https://isee.github.io/iSEEWorkshopEuroBioc2020/articles/overview.html),
   or `vignette('overview', 'iSEEWorkshopEuroBioc2020')`
 
-- [Exercises](https://isee.github.io/iSEEWorkshopEuroBioc2020/articles/exercises.html),
-  or, `vignette('exercises', 'iSEEWorkshopEuroBioc2020')`
+- [Exercises/"recipes"](https://isee.github.io/iSEEWorkshopEuroBioc2020/articles/recipes.html),
+  or, `vignette('recipes', 'iSEEWorkshopEuroBioc2020')`
 
 ???
 
