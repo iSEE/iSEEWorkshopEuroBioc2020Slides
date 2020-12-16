@@ -72,9 +72,9 @@
     },
     "DelayedArray": {
       "Package": "DelayedArray",
-      "Version": "0.17.5",
+      "Version": "0.17.6",
       "Source": "Bioconductor",
-      "Hash": "2be0c2e725881b9543983e78a726f940"
+      "Hash": "2b8f4edefea83ec517828d9f76ac25c7"
     },
     "GenomeInfoDb": {
       "Package": "GenomeInfoDb",
@@ -426,10 +426,10 @@
     },
     "htmlwidgets": {
       "Package": "htmlwidgets",
-      "Version": "1.5.2",
+      "Version": "1.5.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "0aaf56b7960bb066646e1868cadcaf07"
+      "Hash": "6fdaa86d0700f8b3e92ee3c445a5a10d"
     },
     "httpuv": {
       "Package": "httpuv",
@@ -572,10 +572,10 @@
     },
     "nlme": {
       "Package": "nlme",
-      "Version": "3.1-150",
+      "Version": "3.1-151",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "82e52d2c6e674764ffb122d084afa96b"
+      "Hash": "42c8ba2b6a32a6bf0874e93e3bd86a43"
     },
     "openssl": {
       "Package": "openssl",
@@ -671,7 +671,9 @@
     "renv": {
       "Package": "renv",
       "Version": "0.12.3",
-      "Source": "Repository"
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b5510c50c7f31d453c385c7b460af2b9"
     },
     "rintrojs": {
       "Package": "rintrojs",
